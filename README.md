@@ -6,4 +6,4 @@ Build using Node.js, express, morgan, socket IO and mongodb
 
 The images after each round are stored in the mongoDB database.
 
-Built by Weikun Liang
+Built by Weikun Liang for 67328 Final Project
