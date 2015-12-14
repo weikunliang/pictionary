@@ -1,0 +1,156 @@
+<html>
+	<head>    
+		<meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0" />
+		<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>  
+		<script src="/js/draw.js"></script>
+		<!-- Notice that socket.io adds a path to its client-side js that is not in /public -->
+		<script src="/socket.io/socket.io.js"></script>
+		<!-- This is my example client-side javascript that uses socket.io -->
+		<script src="/js/clientSocket.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+
+		<!-- The initial page of the application -->
+		<div class="container header">
+			<h4>Player <div class="usernameArea"></div></h4>
+		</div>
+
+		<!-- The initial page of the application -->
+		<div class="container initialPage">
+			<div class="row">
+			  <div class="col-xs-12 col-md-4 col-centered">
+			  	<h1>Pictionary</h1> <br><br>
+				<h3>Enter Username</h3>
+				<div class="form-group input-group-lg">
+				  <input id="username" type="text" name="username" class="form-control input-lg" placeholder="Username"><br>
+				</div>
+				<button id="join" class="btn btn-info btn-lg" type="button">Join Game</button>
+			  </div>
+			</div>
+		</div>
+
+		<!-- The screen where the artist waits -->
+		<div class="container artistWaiting">
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<h2>Welcome <div class="usernameArea"></div>!</h2>
+					<h3>You will be the artist this round. 
+						<br><br>You will be given a word to draw and other players will have to guess it.
+						<br><br>Click start game when everyone has joined!</h3>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<h3>Players</h3>
+					<div class="currentPlayers">
+						<ul class="list-group"></ul>
+					</div>
+					<button id="startGame" class="btn btn-info btn-lg">Start Game</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- The rest of the player waits for the artist to start-->
+		<div class="container playerWaiting">
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<h2>Welcome <div class="usernameArea"></div>!</h2>
+					<h3>You are the player this round.
+						<br><br>Another player will draw a word and you'll guess what the word is.
+						<br><br>Waiting for the artist to start the game...
+					</h3>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<h3>Players</h3>
+					<div class="currentPlayers">
+						<ul class="list-group"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- The artist is given a word draws the picture -->
+		<div class="container drawScreen">
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<h3>Your word is: <br><br><br><span class="label label-danger guessWord">sdf</span></h3>
+				</div>
+				<div class="col-xs-12 col-md-6 drawing">
+					<h3>Draw image here</h3>
+					<canvas id="main"></canvas><br>
+					<button id="clear" class="btn btn-warning">Clear</button>
+					<button id="submit" class="btn btn-warning">Submit</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- The rest of the player waits for the artist to finish drawing -->
+		<div class="container waitScreen">
+			<div class="row">
+			  <div class="col-xs-12 col-md-8 col-centered">
+				<h2>Waiting for the artist to draw...</h2>
+			  </div>
+			</div>
+		</div>
+
+		<!-- Artist waits for the player to guess -->
+		<div class="container artistWaitScreen">
+			<div class="row">
+			  <div class="col-xs-12 col-md-8 col-centered">
+				<h2>Waiting for the players to guess...</h2>
+			  </div>
+			</div>
+		</div>
+
+		<!-- Players guess the drawing -->
+		<div class="container guessScreen">
+			<div class="row">
+			  <div class="col-xs-12 col-md-6 col-centered">
+				<h3>Guess drawing</h3>
+				<canvas id="image"></canvas><br>
+				<input id="answer" class="form-control input-lg" type="text" name="answer">
+				<button id="guess" class="btn btn-info btn-lg">Submit</button>
+			  </div>
+			</div>
+		</div>
+
+		<!-- Artist sees what others said -->
+		<div class="container allSolutionScreen">
+			<div class="row">
+			  <div class="col-xs-12 col-md-6">
+				<h3>What other players said</h3>
+				<div id="allAnswers"><ul class="list-group"></ul></div>
+			  </div>
+			  <div class="col-xs-12 col-md-6">
+				<h3>What other players drew</h3>
+				<div id="canvasImage">
+					<canvas id="otherDrawing"></canvas><br>
+				</div>
+				<button id="nextRound" class="btn btn-success btn-lg">Start Next Round</button>
+			  </div>
+			</div>
+		</div>
+
+		<!-- The solution screen -->
+		<div class="container solutionScreen">
+			<div class="row">
+				<div class="col-xs-12 col-md-6">
+					<h3>The answer was <div id="answerWord"></div></h3>	
+					<h3>You got the answer<br><br><br><span class="label label-danger correct"></span></h3>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<canvas id="solution"></canvas><br>
+				</div>
+			</div>
+		</div>
+
+		<!-- The screen when someone disconnects -->
+		<div class="container disconnect">
+			<div class="row">
+			  <div class="col-xs-12 col-md-8 col-centered">
+				<h2>Someone has disconnected..<br>Please start the game again.</h2>
+			  </div>
+			</div>
+		</div>
+	</body>
+</html>

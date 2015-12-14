@@ -1,0 +1,98 @@
+@font-face {
+    font-family: Helvetica;
+}
+
+/* Some styling for the HTML body */
+body {
+    background: url(images/background.png); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Futura;
+}
+
+/* Initially set all the HTML divs to display: none and then display them one by one */
+.artistWaiting, .playerWaiting, .drawScreen, .waitScreen, .header, .artistWaitScreen, .guessScreen, .allSolutionScreen, .solutionScreen, .disconnect {
+	display: none;
+}
+
+/* Center everything in the column */
+.center {
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
+}
+
+/* Center everything in the column */
+.col-centered {
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#join, #startGame {
+	margin-top: 30px;
+}
+
+.initialPage, .artistWaiting, .playerWaiting {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.form-group {
+	margin-top: 20px;
+}
+
+/* To have the text display one the same line as the previous texts */
+.usernameArea, #answerWord {
+	white-space: nowrap;
+	display: inline-block;
+}
+
+.header {
+	margin-top: 10px;
+}
+
+.guessWord, .correct {
+	font-size: 40px;
+	margin: 20% 20%;
+	margin-bottom: 30px;
+}
+
+#startGame{
+	margin-bottom: 30px;
+}
+
+#clear, #submit, #guess {
+	margin: 20 0;
+}
+
+/* Styling of the canvas so it looks good */
+#main, #image, #artistSolution, #solution, #otherDrawing {
+	width: 100%;
+	height: 40%;
+	background-color: white;
+	border:1px solid #000000;
+}
+
+#solution {
+	margin-top: 20px;
+}
+
+.waitScreen, .artistWaitScreen {
+	margin-top: 30px;
+}
+
+#answer {
+	margin-top: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
